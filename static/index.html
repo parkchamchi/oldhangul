@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>VUETEST</title>
+		<link rel="stylesheet" type="text/css" href="index.css">
+
+		<style type="text/css">
+			body {
+				background-color: #000000;
+				color: #ffffff;
+				font-family: sans-serif;
+				text-align: center;
+			}
+
+			#mainp {
+				font-size: 1000%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>VUETEST</h1>
+		<p id="mainp">
+ 
+		</p>
+		<button onclick="onTestButtonClick();">asdf</button>
+
+		<script>
+			let i = 0;
+			const targets = ['ᄣ', 'ᆋ', 'ᇦ'];
+
+			window.onload = function() {
+				fetchjson();
+			};
+
+			function onTestButtonClick() {
+				const mainp = document.getElementById("mainp");
+				mainp.innerText += targets[i++];
+
+				fetchjson();
+			}
+
+			async function fetchjson() {
+				const res = await fetch("jamo.json");
+				const json = await res.json();
+				console.log(json);
+			}
+	</script>
+	</body>
+</html>
