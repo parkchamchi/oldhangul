@@ -1,49 +1,43 @@
 <script>
 	import MainP from "./components/MainP.vue";
-	import Jamo from "./components/Jamo.vue";
+	import JamoList from "./components/JamoList.vue";
 
 	export default {
 		components: {
-			MainP, Jamo,
+			MainP, JamoList,
+		},
+		data() {
+			return {
+				jamojson: {},
+			};
+		},
+		created() {
+			this.fetchjson();
+		},
+		methods: {
+			async fetchjson() {
+				const res = await fetch("jamo.json");
+				const json = await res.json();
+				console.log(json);
+
+				this.jamojson = json;
+			},
 		}
 	}
 
-	let i = 0;
-	const targets = ['ᄣ', 'ᆋ', 'ᇦ'];
-	let jamojson = {};
-
-	window.onload = function() {
-		fetchjson();
-	};
-
-	function onTestButtonClick() {
-		const mainp = document.getElementById("mainp");
-		mainp.innerText += targets[i++];
-
-		fetchjson();
-	}
-
-	async function fetchjson() {
-		const res = await fetch("jamo.json");
-		const json = await res.json();
-		console.log(json);
-
-		jamojson = json;
-	}
+	
 </script>
 
 <template>
-	<header>
-		
-		<Jamo :ival="55267" :members="[31, 35]" />
-		<br>
-		<button onclick="onTestButtonClick();" class="btn btn-primary">asdf</button>
+	<div v-for="i in [0, 1, 2]" :key="i">
+		<JamoList :jamojson="jamojson" :pos=i />
+	</div>
 
-	</header>
+	<!--
+	<button onclick=";" class="btn btn-primary">asdf</button>
 
-	<main>
-		<MainP />
-	</main>
+	<MainP />
+	-->
 </template>
 
 <style scoped>

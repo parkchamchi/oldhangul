@@ -89,12 +89,25 @@ class JamoSet:
 		memlist = list(memset)
 		memlist.sort()
 
-		newout = {"ref": memlist, 0: [], 1: [], 2: []}
+		memdict = {}
+		for m in memlist:
+			try:
+				c = unicodedata.lookup("HANGUL LETTER " + m)
+			except KeyError:
+				try:
+					c = unicodedata.lookup("HANGUL CHOSEONG " + m)
+				except KeyError:
+					c = unicodedata.lookup("HANGUL " + m)
+
+			memdict[m] = ord(c)
+
+		newout = {"ref": memdict, 0: [], 1: [], 2: []}
 		for d in out:
 			ival, pos, members = d["ival"], d["pos"], d["members"]
+
 			newout[pos].append({
 				"ival": ival,
-				"members": [memlist.index(m) for m in members],
+				"members": [memdict[m] for m in members],
 			})
 
 		return newout
@@ -102,5 +115,5 @@ class JamoSet:
 jamoset = JamoSet()
 d = jamoset.get_all()
 
-with open("static/jamo.json", "wt", encoding="utf-8") as fout:
+with open("oldhangul/jamo.json", "wt", encoding="utf-8") as fout:
 	json.dump(d, fout, indent='\t')

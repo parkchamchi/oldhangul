@@ -1,0 +1,42 @@
+<script>
+	import Jamo from "./Jamo.vue";
+
+	export default {
+		components: {
+			Jamo,
+		},
+		props: {
+			jamojson: {
+				type: Object,
+				required: true,
+			},
+			pos: {
+				type: Number,
+				required: true,
+				validator: (val) => [0, 1, 2].includes(val),
+			}
+		}
+	}
+</script>
+
+<template>
+	<h3>{{ pos }}</h3>
+
+	<div id="jamolist" class="container m-2">
+		<div v-for="e in jamojson[pos]" key="e.ival" class="card_div">
+			<Jamo :ival="e.ival" :members="e.members" />
+		</div>
+	</div>
+</template>
+
+<style scoped>
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		/*justify-content: space-between;*/
+	}
+	.card_div {
+		margin: 0.1%;
+		padding: 0.1%;
+	}
+</style>
