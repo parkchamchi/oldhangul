@@ -14,6 +14,14 @@
 				type: Number,
 				required: true,
 				validator: (val) => [0, 1, 2].includes(val),
+			},			
+		},
+		emits: ["jamo-selected"],
+
+		methods: {
+			onJamoSelected(ival) {
+				//console.log(ival);
+				this.$emit("jamo-selected", ival);
 			}
 		}
 	}
@@ -24,7 +32,7 @@
 
 	<div id="jamolist" class="container m-2">
 		<div v-for="e in jamojson[pos]" key="e.ival" class="card_div">
-			<Jamo :ival="e.ival" :members="e.members" />
+			<Jamo :ival="e.ival" :members="e.members" @jamo-selected="onJamoSelected" />
 		</div>
 	</div>
 </template>

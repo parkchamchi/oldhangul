@@ -22,6 +22,10 @@
 
 				this.jamojson = json;
 			},
+
+			onJamoSelected(ival) {
+				console.log(ival);
+			}
 		}
 	}
 
@@ -30,7 +34,7 @@
 
 <template>
 	<div v-for="i in [0, 1, 2]" :key="i">
-		<JamoList :jamojson="jamojson" :pos=i />
+		<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
 	</div>
 
 	<!--
