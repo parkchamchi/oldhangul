@@ -1,10 +1,11 @@
 <script>
 	import MainP from "./components/MainP.vue";
 	import JamoList from "./components/JamoList.vue";
+	import CurLetter from "./components/CurLetter.vue";
 
 	export default {
 		components: {
-			MainP, JamoList,
+			MainP, JamoList, CurLetter
 		},
 		data() {
 			return {
@@ -35,6 +36,10 @@
 <template>
 	<div v-for="i in [0, 1, 2]" :key="i">
 		<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
+	</div>
+
+	<div>
+		<CurLetter />
 	</div>
 
 	<!--
