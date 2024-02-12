@@ -42,6 +42,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		/*justify-content: space-between;*/
+
+		/*overflow: scroll;*/
+		/*height: 600px;*/
 	}
 	.card_div {
 		margin: 0.1%;

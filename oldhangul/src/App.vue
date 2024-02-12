@@ -1,11 +1,10 @@
 <script>
-	import MainP from "./components/MainP.vue";
 	import JamoList from "./components/JamoList.vue";
 	import CurLetter from "./components/CurLetter.vue";
 
 	export default {
 		components: {
-			MainP, JamoList, CurLetter
+			JamoList, CurLetter
 		},
 		data() {
 			return {
@@ -35,19 +34,19 @@
 </script>
 
 <template>
-	<div>
+	<div id="div_curletter">
 		<CurLetter ref="mainCurLetter" />
 	</div>
 
-	<div v-for="i in [0, 1, 2]" :key="i">
-		<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
+	<br>
+
+	<div class="container" id="div_jamolist_container">
+		<div class="row">
+			<div v-for="i in [0, 1, 2]" :key="i" class="col">
+				<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
+			</div>
+		</div>
 	</div>
-
-	<!--
-	<button onclick=";" class="btn btn-primary">asdf</button>
-
-	<MainP />
-	-->
 </template>
 
 <style scoped>
@@ -56,6 +55,8 @@
 		color: #ffffff;
 		font-family: sans-serif;
 		text-align: center;
+
+		align-content: center;
 	}
 
 	header {
@@ -65,6 +66,10 @@
 	.logo {
 		display: block;
 		margin: 0 auto 2rem;
+	}
+
+	#div_jamolist_container {
+		width: 100%;
 	}
 
 	@media (min-width: 1024px) {
