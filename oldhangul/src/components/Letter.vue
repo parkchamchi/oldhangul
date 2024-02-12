@@ -24,11 +24,13 @@
 <template>
 	<h3>Letter</h3>
 
-	<p>
-		<span v-for="ival in ivals" key="ival">{{ ival }}</span>
+	<p id="p_letter">
+		<span v-for="ival in ivals" key="ival">{{ String.fromCharCode(ival) }}</span>
 	</p>
 </template>
 
 <style scoped>
-	
+	#p_letter {
+		font-size: 300%;
+	}
 </style>

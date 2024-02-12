@@ -26,6 +26,7 @@
 
 			onJamoSelected(ival) {
 				console.log(ival);
+				this.$refs.mainCurLetter.selectJamo(ival);
 			}
 		}
 	}
@@ -34,12 +35,12 @@
 </script>
 
 <template>
-	<div v-for="i in [0, 1, 2]" :key="i">
-		<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
+	<div>
+		<CurLetter ref="mainCurLetter" />
 	</div>
 
-	<div>
-		<CurLetter />
+	<div v-for="i in [0, 1, 2]" :key="i">
+		<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
 	</div>
 
 	<!--

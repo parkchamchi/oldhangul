@@ -6,16 +6,21 @@
 			Letter,
 		},
 		props: {
-				
+			ivals: {
+				type: Array,
+			}
 		},
 
 		methods: {
-
+			selectJamo: function(ival) {
+				console.log(ival);
+				this.ivals.push(ival);
+			},
 		},
 
 		data() {
 			return {
-				
+				ivals: [],
 			};
 		}
 	}
@@ -24,7 +29,7 @@
 <template>
 	<h3>CurLetter</h3>
 
-	<Letter :ivals="[123, 456, 789]" />
+	<Letter :ivals="this.ivals" />
 </template>
 
 <style scoped>
