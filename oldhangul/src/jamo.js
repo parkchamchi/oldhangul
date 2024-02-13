@@ -6,7 +6,7 @@ JamoObj.json =
 	await async function () {
 		console.log("Fetching the json.");
 
-		const res = await fetch("jamo.json");
+		const res = await fetch("src/assets/jamo.json");
 		const json = await res.json();
 
 		return json;

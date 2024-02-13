@@ -115,5 +115,5 @@ class JamoSet:
 jamoset = JamoSet()
 d = jamoset.get_all()
 
-with open("oldhangul/jamo.json", "wt", encoding="utf-8") as fout:
+with open("oldhangul/src/assets/jamo.json", "wt", encoding="utf-8") as fout:
 	json.dump(d, fout, indent='\t')
