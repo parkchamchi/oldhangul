@@ -2,7 +2,7 @@ import flask
 
 import argparse
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_folder="docs")
 
 @app.route("/")
 def index():
