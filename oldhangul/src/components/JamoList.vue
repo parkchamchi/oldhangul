@@ -1,7 +1,7 @@
 <script>
 	import Jamo from "./Jamo.vue";
 
-	import { getJamos } from "../jamo.js";
+	import { JamoObj } from "../jamo.js";
 
 	export default {
 		components: {
@@ -23,7 +23,7 @@
 			},
 
 			getJamos(pos) {
-				return getJamos(pos);
+				return this.jamoObj.getJamos(pos);
 			}
 		},
 
@@ -31,6 +31,8 @@
 			return {
 				conseqs: [],
 				lefts: [],
+
+				jamoObj: new JamoObj(),
 			}
 		}
 	}

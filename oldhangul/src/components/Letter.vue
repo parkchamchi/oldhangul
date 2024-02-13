@@ -1,4 +1,6 @@
 <script>
+	import { JamoObj } from "../jamo.js";
+
 	export default {
 		components: {
 			
@@ -8,14 +10,17 @@
 		},
 
 		methods: {
-			insert: function(ival) {
-				this.ivals.push(ival);
+			insert: function (ival) {
+				let pos = this.jamoObj.getPos(ival); console.log(pos);
+				this.ivals[pos] = ival;
 			},
 		},
 
 		data() {
 			return {
 				ivals: [],
+
+				jamoObj: new JamoObj(),
 			};
 		},
 	}

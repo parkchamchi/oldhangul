@@ -16,7 +16,6 @@
 		},
 		methods: {
 			onJamoSelected(ival) {
-				console.log(ival);
 				this.$refs.mainCurLetter.selectJamo(ival);
 			}
 		}
@@ -26,6 +25,9 @@
 </script>
 
 <template>
+	<h1>OLDHANGUL</h1>
+	<p>Incomplete. See <a href="https://github.com/parkchamchi/oldhangul">the repo</a></p>
+
 	<div id="div_curletter">
 		<CurLetter ref="mainCurLetter" />
 	</div>

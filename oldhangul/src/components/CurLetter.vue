@@ -6,21 +6,18 @@
 			Letter,
 		},
 		props: {
-			ivals: {
-				type: Array,
-			}
+			
 		},
 
 		methods: {
-			selectJamo: function(ival) {
-				console.log(ival);
+			selectJamo: function (ival) {
 				this.$refs.theLetter.insert(ival);
 			},
 		},
 
 		data() {
 			return {
-
+				ivals: [null, null, null, null],
 			};
 		}
 	}

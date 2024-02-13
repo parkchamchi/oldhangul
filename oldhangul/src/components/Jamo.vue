@@ -1,4 +1,6 @@
 <script>
+	import { JamoObj } from "../jamo.js";
+
 	export default {
 		props: {
 			ival: {
@@ -15,7 +17,7 @@
 
 		data() {
 			return {
-
+				jamoObj: new JamoObj(),
 			};
 		},
 
@@ -33,14 +35,8 @@
 			<a class="btn btn-fix" @click="onClicked()">
 				<div class="card-body">
 					<div class="card-title">
-						<p id="actuallettter">{{ String.fromCharCode(ival) }}</p>
+						<p id="actuallettter">{{ jamoObj.ivalToDispStr(ival) }}</p>
 					</div>
-					
-					<!--
-					<ul class="list-group list-group-flush">
-						<li class="group-item" v-for="m in members" :key="m">{{ String.fromCharCode(m) }}</li>
-					</ul>
-					-->
 				</div>
 			</a>
 		</div>
