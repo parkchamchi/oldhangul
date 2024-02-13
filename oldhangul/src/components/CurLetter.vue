@@ -14,13 +14,13 @@
 		methods: {
 			selectJamo: function(ival) {
 				console.log(ival);
-				this.ivals.push(ival);
+				this.$refs.theLetter.insert(ival);
 			},
 		},
 
 		data() {
 			return {
-				ivals: [],
+
 			};
 		}
 	}
@@ -29,7 +29,7 @@
 <template>
 	<h3>CurLetter</h3>
 
-	<Letter :ivals="this.ivals" />
+	<Letter ref="theLetter" />
 </template>
 
 <style scoped>

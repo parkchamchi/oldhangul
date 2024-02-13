@@ -4,18 +4,18 @@
 			
 		},
 		props: {
-			ivals: {
-				type: Array,
-			}
+
 		},
 
 		methods: {
-
+			insert: function(ival) {
+				this.ivals.push(ival);
+			},
 		},
 
 		data() {
 			return {
-				
+				ivals: [],
 			};
 		},
 	}

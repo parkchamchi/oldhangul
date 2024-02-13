@@ -1,15 +1,13 @@
 <script>
 	import Jamo from "./Jamo.vue";
 
+	import { getJamos } from "../jamo.js";
+
 	export default {
 		components: {
 			Jamo,
 		},
 		props: {
-			jamojson: {
-				type: Object,
-				required: true,
-			},
 			pos: {
 				type: Number,
 				required: true,
@@ -22,6 +20,17 @@
 			onJamoSelected(ival) {
 				//console.log(ival);
 				this.$emit("jamo-selected", ival);
+			},
+
+			getJamos(pos) {
+				return getJamos(pos);
+			}
+		},
+
+		data() {
+			return {
+				conseqs: [],
+				lefts: [],
 			}
 		}
 	}
@@ -31,7 +40,7 @@
 	<h3>{{ pos }}</h3>
 
 	<div id="jamolist" class="container m-2">
-		<div v-for="e in jamojson[pos]" key="e.ival" class="card_div">
+		<div v-for="e in getJamos(pos)" key="e.ival" class="card_div">
 			<Jamo :ival="e.ival" :members="e.members" @jamo-selected="onJamoSelected" />
 		</div>
 	</div>

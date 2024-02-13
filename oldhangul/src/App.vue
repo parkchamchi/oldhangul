@@ -12,17 +12,9 @@
 			};
 		},
 		created() {
-			this.fetchjson();
+
 		},
 		methods: {
-			async fetchjson() {
-				const res = await fetch("jamo.json");
-				const json = await res.json();
-				console.log(json);
-
-				this.jamojson = json;
-			},
-
 			onJamoSelected(ival) {
 				console.log(ival);
 				this.$refs.mainCurLetter.selectJamo(ival);
@@ -43,7 +35,7 @@
 	<div class="container" id="div_jamolist_container">
 		<div class="row">
 			<div v-for="i in [0, 1, 2]" :key="i" class="col">
-				<JamoList :jamojson="jamojson" :pos=i @jamo-selected="onJamoSelected" />
+				<JamoList :pos=i @jamo-selected="onJamoSelected" />
 			</div>
 		</div>
 	</div>
