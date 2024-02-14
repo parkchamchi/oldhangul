@@ -44,6 +44,7 @@
 
 <style>
 	#actuallettter {
+		font-family: "Noto Sans KR", sans-serif;
 		font-size: 200%;
 	}
 	.card {

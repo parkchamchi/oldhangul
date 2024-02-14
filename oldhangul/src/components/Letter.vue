@@ -11,7 +11,7 @@
 
 		methods: {
 			insert: function (ival) {
-				let pos = this.jamoObj.getPos(ival); console.log(pos);
+				let pos = this.jamoObj.getPos(ival);
 				this.ivals[pos] = ival;
 			},
 		},
@@ -36,6 +36,7 @@
 
 <style scoped>
 	#p_letter {
+		font-family: "Noto Sans KR", sans-serif;
 		font-size: 300%;
 	}
 </style>
