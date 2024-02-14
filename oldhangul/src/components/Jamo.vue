@@ -23,7 +23,6 @@
 
 		methods: {
 			onClicked() {
-				//console.log(this.ival);
 				this.$emit("jamo-selected", this.ival);
 			}
 		}

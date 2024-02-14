@@ -1,38 +1,40 @@
 <script>
-	import Jamo from "./Jamo.vue";
+	import JamoListSub from "./JamoListSub.vue";
 
 	import { JamoObj } from "../jamo.js";
 
 	export default {
 		components: {
-			Jamo,
+			JamoListSub,
 		},
 		props: {
 			pos: {
 				type: Number,
 				required: true,
 				validator: (val) => [0, 1, 2].includes(val),
-			},			
+			},
 		},
 		emits: ["jamo-selected"],
 
 		methods: {
 			onJamoSelected(ival) {
-				//console.log(ival);
 				this.$emit("jamo-selected", ival);
-			},
 
-			getJamos(pos) {
-				return this.jamoObj.getJamos(pos);
-			}
+				this.nexts = this.jamoObj.getNextJamos(ival);
+				this.lefts = this.alls.filter((e) => !this.nexts.includes(e))
+			},
 		},
 
 		data() {
-			return {
-				conseqs: [],
-				lefts: [],
+			const jamoObj = new JamoObj();
+			const alls = jamoObj.getJamos(this.pos);
 
-				jamoObj: new JamoObj(),
+			return {
+				jamoObj: jamoObj,
+				
+				alls: alls,
+				nexts: [],
+				lefts: [...alls],
 			}
 		}
 	}
@@ -41,24 +43,11 @@
 <template>
 	<h3>{{ pos }}</h3>
 
-	<div id="jamolist" class="container m-2">
-		<div v-for="e in getJamos(pos)" key="e.ival" class="card_div">
-			<Jamo :ival="e.ival" :members="e.members" @jamo-selected="onJamoSelected" />
-		</div>
-	</div>
+	<JamoListSub :list=this.nexts @jamo-selected="onJamoSelected" />
+	<hr>
+	<JamoListSub :list=this.lefts @jamo-selected="onJamoSelected" />
 </template>
 
 <style scoped>
-	.container {
-		display: flex;
-		flex-wrap: wrap;
-		/*justify-content: space-between;*/
 
-		/*overflow: scroll;*/
-		/*height: 600px;*/
-	}
-	.card_div {
-		margin: 0.1%;
-		padding: 0.1%;
-	}
 </style>

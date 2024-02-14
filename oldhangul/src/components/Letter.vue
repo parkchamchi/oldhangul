@@ -30,7 +30,7 @@
 	<h3>Letter</h3>
 
 	<p id="p_letter">
-		<span v-for="ival in ivals" key="ival">{{ String.fromCharCode(ival) }}</span>
+		<span v-for="ival in ivals" :key="ival">{{ String.fromCharCode(ival) }}</span>
 	</p>
 </template>
 
