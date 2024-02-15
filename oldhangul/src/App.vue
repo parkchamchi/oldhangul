@@ -40,6 +40,11 @@
 				<JamoList :pos=i @jamo-selected="onJamoSelected" />
 			</div>
 		</div>
+		<div class="row">
+			<div>
+				<JamoList :pos=3 @jamo-selected="onJamoSelected" />
+			</div>
+		</div>
 	</div>
 </template>
 

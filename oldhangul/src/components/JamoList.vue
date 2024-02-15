@@ -11,7 +11,7 @@
 			pos: {
 				type: Number,
 				required: true,
-				validator: (val) => [0, 1, 2].includes(val),
+				//validator: (val) => [0, 1, 2].includes(val),
 			},
 		},
 		emits: ["jamo-selected"],

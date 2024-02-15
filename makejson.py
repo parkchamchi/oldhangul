@@ -1,7 +1,7 @@
 import unicodedata
 import json
 
-jamo_ranges = [(0x1100, 0x11ff), (0xa960, 0xa97c), (0xd7b0, 0xd7c6), (0xd7cb, 0xd7fb)]
+jamo_ranges = [(0x1100, 0x11ff), (0xa960, 0xa97c), (0xd7b0, 0xd7c6), (0xd7cb, 0xd7fb), (0x302e, 0x302f)]
 
 class Jamo:
 	def __init__(self, ival, pos, members):
@@ -57,7 +57,7 @@ class JamoSet:
 	@staticmethod
 	def get_metadata(ival):
 		cname = unicodedata.name(chr(ival))
-		n0, n1, n2 = cname.split()
+		n0, n1, n2 = cname.split(maxsplit=2)
 
 		assert n0 == "HANGUL"
 
@@ -67,10 +67,14 @@ class JamoSet:
 			pos = 1
 		elif n1 == "JONGSEONG":
 			pos = 2
+		elif n2 == "DOT TONE MARK":
+			pos = 3
 		else:
 			raise ValueError(f"Unknown n1: {n1}")
 		
 		members = n2.split('-')
+		if pos == 3:
+			members = []
 
 		return Jamo(ival, pos, members)
 
@@ -101,7 +105,7 @@ class JamoSet:
 
 			memdict[m] = ord(c)
 
-		newout = {"ref": memdict, 0: [], 1: [], 2: []}
+		newout = {"ref": memdict, 0: [], 1: [], 2: [], 3: []}
 		for d in out:
 			ival, pos, members = d["ival"], d["pos"], d["members"]
 
@@ -115,5 +119,5 @@ class JamoSet:
 jamoset = JamoSet()
 d = jamoset.get_all()
 
-with open("oldhangul/src/assets/jamo.json", "wt", encoding="utf-8") as fout:
+with open("oldhangul/jamo.json", "wt", encoding="utf-8") as fout:
 	json.dump(d, fout, indent='\t')

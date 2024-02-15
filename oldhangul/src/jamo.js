@@ -25,7 +25,7 @@ JamoObj.prototype.getObjByIval = function (ival) {
 
 	const retOnFail = null;
 
-	for (const pos of ["0", "1", "2"]) {
+	for (const pos of ["0", "1", "2", "3"]) {
 		const targetdict = JamoObj.json[pos];
 
 		for (const e of targetdict) {
