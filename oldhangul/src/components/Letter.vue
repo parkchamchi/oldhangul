@@ -11,7 +11,15 @@
 
 		methods: {
 			insert: function (ival) {
-				let pos = this.jamoObj.getPos(ival);
+				let pos;
+
+				if (ival > 0)
+					pos = this.jamoObj.getPos(ival);
+				else {
+					pos = -ival;
+					ival = null;
+				}
+
 				this.ivals[pos] = ival;
 			},
 			getStr: function () {

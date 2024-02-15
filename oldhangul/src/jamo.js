@@ -64,6 +64,8 @@ JamoObj.prototype.ivalToDispStr = function (ival) {
 }
 
 JamoObj.prototype.getNextJamos = function (ival) {
+	if (ival <= 0) return [];
+
 	const ivalObj = this.getObjByIval(ival);
 	const ivalMems = ivalObj["members"];
 	const targetdict = this.getJamos(ivalObj.pos);

@@ -41,7 +41,10 @@
 </script>
 
 <template>
-	<h3>{{ pos }}</h3>
+	<h3>
+		<button type="button" class="btn btn-secondary" @click="onJamoSelected(-this.pos)">Clear</button>
+	</h3>
+	<hr>
 
 	<JamoListSub :list=this.nexts @jamo-selected="onJamoSelected" />
 	<hr>
