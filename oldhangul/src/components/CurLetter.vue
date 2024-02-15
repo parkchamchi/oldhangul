@@ -13,6 +13,14 @@
 			selectJamo: function (ival) {
 				this.$refs.theLetter.insert(ival);
 			},
+			onCopy: function () {
+				const res = this.$refs.theLetter.getStr();
+				window.navigator.clipboard.writeText(res);
+
+				const button = document.getElementById("copybutton");
+				button.innerText = "Copied: " + res;
+				setTimeout(() => button.innerText = "Copy", 2.5 * 1000);
+			},
 		},
 
 		data() {
@@ -24,9 +32,12 @@
 </script>
 
 <template>
-	<h3>CurLetter</h3>
-
 	<Letter ref="theLetter" />
+	<br>
+
+	<button id="copybutton" type="button" class="btn btn-light" @click="onCopy">
+		Copy
+	</button>
 </template>
 
 <style scoped>

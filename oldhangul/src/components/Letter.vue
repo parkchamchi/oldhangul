@@ -14,6 +14,12 @@
 				let pos = this.jamoObj.getPos(ival);
 				this.ivals[pos] = ival;
 			},
+			getStr: function () {
+				const el = document.getElementById("p_letter");
+				const txt = el.innerText;
+
+				return txt;
+			}
 		},
 
 		data() {
@@ -27,8 +33,6 @@
 </script>
 
 <template>
-	<h3>Letter</h3>
-
 	<p id="p_letter">
 		<span v-for="ival in ivals" :key="ival">{{ String.fromCharCode(ival) }}</span>
 	</p>

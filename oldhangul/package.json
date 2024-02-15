@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && copy jamo.json ..\\docs\\",
+    "build": "(IF exist ..\\docs\\ (rmdir ..\\docs\\ /S /Q)) && vite build && copy jamo.json ..\\docs\\",
     "preview": "vite preview"
   },
   "dependencies": {
